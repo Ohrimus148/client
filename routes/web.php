@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('clients', 'Client\ClientController');
+Route::resource('contacts', 'Contact\ContactController');

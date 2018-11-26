@@ -9,6 +9,77 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.VueRouter = require('vue-router').default;
+
+window.VueAxios = require('vue-axios').default;
+
+window.Axios = require('axios').default;
+
+let AppLayout = require('./components/App.vue');
+
+// show the list client component
+
+const ClienLlist = Vue.component('ClientList', require('./components/ClientList.vue'));
+
+// add client component
+
+const ClientAdd = Vue.component('ClientAdd', require('./components/ClientAdd.vue'));
+
+// edit client component
+
+const ClientEdit = Vue.component('ClientEdit', require('./components/ClientEdit.vue'));
+
+// delete client component
+
+const ClientDelete = Vue.component('ClientDelete', require('./components/ClientDelete.vue'));
+
+// view single component
+
+const ClientView = Vue.component('ClientView', require('./components/ClientView.vue'));
+
+//registering Modules
+
+Vue.use(VueRouter, VueAxios, axios);
+
+const router = new VueRouter({mode:'history', routes: routes});
+
+const routes = [
+    {
+        name: 'ClientList',
+        path: '/',
+        component: ClientList
+    },
+    {
+        name: 'ClientAdd',
+        path: '/add-client',
+        component: ClientAdd
+    },
+    {
+        name: 'ClientEdit',
+        path: '/edit/:id',
+        component: ClientEdit
+    },
+    {
+        name: 'ClientDelete',
+        path: '/delete-client',
+        component: ClientDelete
+    },
+    {
+        name: 'ClientView',
+        path: '/view/:id',
+        component: ClientView
+    },
+
+]
+
+new Vue(
+    Vue.util.extend(
+        { router },
+        AppLayout
+    )
+).$mount('#app');
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
