@@ -5,21 +5,19 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueAxios from 'vue-axios';
+// import Axios from 'axios';
 
-window.Vue = require('vue');
-
-window.VueRouter = require('vue-router').default;
-
-window.VueAxios = require('vue-axios').default;
-
-window.Axios = require('axios').default;
-
+window.Axios=require('axios').default;
+window.VueRouter=require('vue-router').default;
 let AppLayout = require('./components/App.vue');
 
 // show the list client component
 
-const ClienLlist = Vue.component('ClientList', require('./components/ClientList.vue'));
+const ClientList = Vue.component('ClientList', require('./components/ClientList.vue'));
 
 // add client component
 
@@ -41,8 +39,6 @@ const ClientView = Vue.component('ClientView', require('./components/ClientView.
 
 Vue.use(VueRouter, VueAxios, axios);
 
-const router = new VueRouter({mode:'history', routes: routes});
-
 const routes = [
     {
         name: 'ClientList',
@@ -51,27 +47,27 @@ const routes = [
     },
     {
         name: 'ClientAdd',
-        path: '/add-client',
+        path: '/create',
         component: ClientAdd
     },
     {
         name: 'ClientEdit',
-        path: '/edit/:id',
+        path: '/clients/edit',
         component: ClientEdit
     },
     {
         name: 'ClientDelete',
-        path: '/delete-client',
+        path: '/clients/:id',
         component: ClientDelete
     },
     {
         name: 'ClientView',
-        path: '/view/:id',
+        path: '/clients/:id',
         component: ClientView
     },
 
-]
-
+];
+const router = new VueRouter({mode:'history', routes: routes});
 new Vue(
     Vue.util.extend(
         { router },
@@ -88,8 +84,6 @@ new Vue(
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
 // const files = require.context('./', true, /\.vue$/i)
 
 // files.keys().map(key => {
@@ -102,6 +96,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });

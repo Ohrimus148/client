@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <transaction name="fade">
+        <transition name="fade">
             <router-view></router-view>
-        </transaction>
+        </transition>
     </div>
 </template>
 

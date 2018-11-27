@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('postcode');
             $table->integer('client_id')->unsigned();
             $table->timestamps();
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 
