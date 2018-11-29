@@ -11,8 +11,11 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h3>Laravel Application</h3>
+<div class="container-fluid header">
+    <div class="container">
+        <span class="logo">LP</span>
+        <h2>Laravel Application</h2>
+    </div>
 </div>
 <section id="app"></section>
 <script>
@@ -21,3 +24,25 @@
     ]); ?>
 </script>
 <script src="{{ asset('js/app.js') }}"> </script>
+<style>
+    .header{
+        background-color: #38c172;
+        color: #ffffff;margin-bottom: 60px;
+
+    }
+    .logo{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        color: #38c172;
+        display: inline-block;
+        font-size: 32px;
+        text-align: center;
+    }
+   h2{
+       padding: 30px 50px;
+       text-transform: uppercase;
+       display: inline-block;
+   }
+</style>

@@ -46,7 +46,7 @@ class ClientController extends Controller
             'email' => 'required',
         ]);
         $create = Client::create($request->all());
-        return response()->json(['status' => 'success','msg'=>'post created successfully']);
+        return response()->json(['status' => 'success','msg'=>'Client created successfully']);
     }
 
     /**
@@ -85,10 +85,10 @@ class ClientController extends Controller
             'email' => 'required',
         ]);
 
-        $post = Client::find($id);
-        if($post->count()){
-            $post->update($request->all());
-            return response()->json(['statur'=>'success','msg'=>'Post updated successfully']);
+        $client = Client::find($id);
+        if($client->count()){
+            $client->update($request->all());
+            return response()->json(['statur'=>'success','msg'=>'Client updated successfully']);
         } else {
             return response()->json(['statur'=>'error','msg'=>'error in updating post']);
         }
@@ -102,10 +102,10 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $post = Client::find($id);
-        if($post->count()){
-            $post->delete();
-            return response()->json(['statur'=>'success','msg'=>'Post deleted successfully']);
+        $client = Client::find($id);
+        if($client->count()){
+            $client->delete();
+            return response()->json(['statur'=>'success','msg'=>'Client deleted successfully']);
         } else {
             return response()->json(['statur'=>'error','msg'=>'error in deleting post']);
         }

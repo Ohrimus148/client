@@ -2,13 +2,13 @@
     <div>
         <h3>Edit New Client</h3>
         <form v-on:submit.prevent = "updateClient">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="edit-title">Name</label>
                 <input id="edit-title" v-model="client.first_name" class="form-control" required />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="edit-body">Email</label>
-                <textarea class="form-control" rows="10" v-model="client.email"></textarea>
+                <input class="form-control" rows="10" v-model="client.email"></input>
             </div>
             <button type="submit" class="btn btn-xs btn-primary">Update Client</button>
             <router-link class="btn btn-xs btn-warning" v-bind:to="'/'">Cancel</router-link>
@@ -37,3 +37,12 @@
         }
     }
 </script>
+
+<style scoped>
+    h3{
+        margin-bottom: 40px;
+    }
+    .btn{
+        margin: 20px 10px;
+    }
+</style>

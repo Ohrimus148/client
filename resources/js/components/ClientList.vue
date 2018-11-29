@@ -1,21 +1,19 @@
 <template id="client-list">
     <div class="row">
         <div class="pull-right">
-            <router-link class="btn btn-xs btn-primary" v-bind:to="{path: '/create'}">
+            <router-link class="btn btn-xs btn-primary add-client" v-bind:to="{path: '/create'}">
                 <span class="glyphicon glyphicon-plus"></span>
                 Add new Client
             </router-link>
 
         </div>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
+                <th class="head">#</th>
                 <th>Name</th>
                 <th>Email</th>
-                <!--<th>Created At</th>-->
-                <!--<th>Updated At</th>-->
-                <th class="col-md-2">Actions</th>
+                <th class="col-md-2 actions">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -23,7 +21,7 @@
                 <td>{{ index + 1 }}</td>
                 <td>{{ client.first_name }}</td>
                 <td>{{ client.email }}</td>
-                <td>
+                <td class="btn-wrapper">
                     <router-link class="btn btn-info btn-xs" v-bind:to="{name: 'ClientView', params: {id: client.id}}"><i class="fa fa-eye" aria-hidden="true"></i> Show</router-link>
                     <router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'ClientEdit', params: {id: client.id}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</router-link>
                     <router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ClientDelete', params: {id: client.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</router-link>
@@ -54,3 +52,20 @@
         }
     }
 </script>
+<style scoped>
+   .add-client{
+       margin: 0px 0px 40px 10px;
+       font-size: 22px;
+   }
+   .actions{
+       text-align: right;
+       padding-right: 50px;
+   }
+
+   .btn-wrapper{
+        text-align: right;
+    }
+    .btn-wrapper .btn{
+        margin-left: 20px;
+    }
+</style>

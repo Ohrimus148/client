@@ -1,11 +1,11 @@
 <template id="client">
     <div>
-        <h3>{{client.first_name}}</h3>
-        <strong>Client : </strong>
-        <div>
-            {{client.email}}
+        <div class="info">
+            <span >Name:</span> {{client.first_name}}
         </div>
-        <span class="glyphicon glyphicon-arrow-left"></span>
+        <div class="info">
+            <span>E-mail:</span>  {{client.email}}
+        </div>
         <router-link v-bind:to="'/'">Back Client List</router-link>
     </div>
 </template>
@@ -23,3 +23,21 @@
         },
     }
 </script>
+<style scoped>
+    .info{
+        margin-bottom: 25px;
+    }
+    .info span{
+        text-transform: uppercase;
+        padding-right: 15px;
+    }
+    a{
+        padding: 10px 15px;
+        color: #ffffff;
+        background-color: #3490dc;
+        border-color: #3490dc;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+</style>

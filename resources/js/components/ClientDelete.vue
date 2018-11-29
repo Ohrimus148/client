@@ -30,3 +30,11 @@
         }
     }
     </script>
+<style scoped>
+    h3{
+        margin-bottom: 40px;
+    }
+    .btn{
+        margin: 20px 10px;
+    }
+</style>

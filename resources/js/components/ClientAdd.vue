@@ -1,16 +1,16 @@
 <template id="add-client">
     <div>
         <h3>Add new Client</h3>
-        <form v-on:submit.prevent = "createClient">
-            <div class="form-group">
+        <form class="add-form" v-on:submit.prevent = "createClient">
+            <div class="form-group col-md-6">
                 <label for="add-title">Name</label>
                 <input id="add-title" v-model="client.first_name" class="form-control" required />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="add-body">Email</label>
-                <textarea class="form-control" rows="10" v-model="client.email"></textarea>
+                <input type="email" class="form-control" rows="10" v-model="client.email"/>
             </div>
-            <button type="submit" class="btn btn-xs btn-primary">Create </button>
+            <button type="submit" class="btn btn-xs btn-primary create">Create </button>
             <router-link class="btn btn-xs btn-warning" v-bind:to="'/'">Cancel</router-link>
         </form>
     </div>
@@ -30,3 +30,11 @@
         },
     }
 </script>
+<style scoped>
+   h3{
+       margin-bottom: 40px;
+   }
+   .btn{
+        margin: 20px 10px;
+    }
+</style>
