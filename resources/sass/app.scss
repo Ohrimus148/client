@@ -8,7 +8,25 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.fa{
+  font-size: 1.6rem;
+  opacity: 0.5;
+}
+.fa-trash-o{
+  color: red;
+}
+.fa-pencil{
+  color: #f6993f;
+}
+.fa-eye{
+  color: #1d68a7;
+}
+.fa:hover{
+  opacity: 1;
 }
