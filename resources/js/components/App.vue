@@ -1,13 +1,17 @@
 <template>
-    <div class="container">
-        <transition name="fade">
-            <router-view></router-view>
-        </transition>
+    <div id ="main">
+       <Header/>
+    <div class = "container">
+        <router-view></router-view>
+    </div>
     </div>
 </template>
 
 <script>
+    import Header  from './Header.vue';
     export default {
+       name:'main-app',
+        components: {Header},
         mounted() {
             console.log('Component mounted')
         }

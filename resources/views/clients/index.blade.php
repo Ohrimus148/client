@@ -11,12 +11,12 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid header">
-    <div class="container">
-        <span class="logo">LP</span>
-        <h2>Laravel Application</h2>
-    </div>
-</div>
+{{--<div class="container-fluid header">--}}
+    {{--<div class="container">--}}
+        {{--<span class="logo">LP</span>--}}
+        {{--<h2>Laravel Application</h2>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <section id="app"></section>
 <script>
     window.Laravel = <?php echo json_encode([

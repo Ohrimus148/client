@@ -14,6 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 })->where('any','.*');
-//Route::get('/', 'Client\ClientController@home');
-//Route::resource('clients', 'Client\ClientController');
-//Route::resource('contacts', 'Contact\ContactController');
+Route::get('/', 'Client\ClientController@home');
+Route::resource('clients', 'Client\ClientController');
+
