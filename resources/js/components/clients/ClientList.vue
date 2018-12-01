@@ -22,9 +22,9 @@
                 <td>{{ client.first_name }}</td>
                 <td>{{ client.email }}</td>
                 <td class="btn-wrapper">
-                    <router-link class="btn btn-info btn-xs" v-bind:to="{name: 'ClientView', params: {id: client.id}}"><i class="fa fa-eye" aria-hidden="true"></i> Show</router-link>
-                    <router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'ClientEdit', params: {id: client.id}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</router-link>
-                    <router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ClientDelete', params: {id: client.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</router-link>
+                    <router-link class="btn btn-xs" v-bind:to="{name: 'ClientView', params: {id: client.id}}"><i class="fa fa-eye" aria-hidden="true"></i></router-link>
+                    <router-link class="btn btn-xs" v-bind:to="{name: 'ClientEdit', params: {id: client.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></router-link>
+                    <router-link class="btn btn-xs" v-bind:to="{name: 'ClientDelete', params: {id: client.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></router-link>
                 </td>
             </tr>
             </tbody>
