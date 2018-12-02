@@ -54147,14 +54147,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return { contacts: '', clients: '' };
+        return {
+            contacts: {
+                address: '',
+                postcode: '',
+                client_id: ''
+            } };
     },
     created: function created() {
         var _this = this;
 
-        var uri = this.$route.params.id;
-        console.log('Hello world10');
-        Axios.get('/contact/').then(function (response) {
+        this.is_refresh = true;
+        var uri = '/contact/' + this.$route.params.id;
+        console.log(this.$route.params.id);
+        Axios.get(uri).then(function (response) {
+            console.log('data', response.data);
             _this.contacts = response.data;
         });
     },
@@ -54162,6 +54169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         filteredContacts: function filteredContacts() {
             if (this.contacts.length) {
+                console.log('1111', this.contacts);
                 return this.contacts;
             }
         }
@@ -54222,7 +54230,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.filteredContacts, function(contact, index) {
+        _vm._l(_vm.contacts, function(contact, index) {
           return _c("tr", [
             _c("td", [_vm._v(_vm._s(index + 1))]),
             _vm._v(" "),
@@ -54230,60 +54238,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(contact.postcode))]),
             _vm._v(" "),
-            _c(
-              "td",
-              { staticClass: "btn-wrapper" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-xs",
-                    attrs: {
-                      to: { name: "ContactView", params: { id: contact.id } }
-                    }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-eye",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-xs",
-                    attrs: {
-                      to: { name: "ContactEdit", params: { id: contact.id } }
-                    }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-pencil",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-xs",
-                    attrs: {
-                      to: { name: "ContactDelete", params: { id: contact.id } }
-                    }
-                  },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-trash-o",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ]
-                )
-              ],
-              1
-            )
+            _c("td", { staticClass: "btn-wrapper" })
           ])
         })
       )

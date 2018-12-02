@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Client;
+use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,7 @@ class ClientController extends Controller
 
     public function getClientContactsById($id)
     {
-        dd($id);
-        return Client::with('Contacts')->first();
+         return Contact::where('client_id', $id)->first();
     }
 
     /**

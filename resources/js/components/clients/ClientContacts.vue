@@ -1,4 +1,4 @@
-<template id="contact-list">
+<template id="contact-list-view">
     <div class="row justify-content-between">
         <div class="pull-right">
             <router-link class="btn btn-xs btn-primary add-client" v-bind:to="{path: '/contacts/create'}">
@@ -21,14 +21,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(contact, index) in filteredContacts">
-                <td>{{ index + 1 }}</td>
+            <tr v-for="contact in contacts">
+                <td>{{  index + 1 }}</td>
                 <td>{{ contact.address }}</td>
                 <td>{{ contact.postcode }}</td>
                 <td class="btn-wrapper">
-                    <router-link class="btn btn-xs" v-bind:to="{name: 'ContactView', params: {id: contact.id}}"><i class="fa fa-eye" aria-hidden="true"></i></router-link>
-                    <router-link class="btn btn-xs" v-bind:to="{name: 'ContactEdit', params: {id: contact.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></router-link>
-                    <router-link class="btn btn-xs" v-bind:to="{name: 'ContactDelete', params: {id: contact.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></router-link>
+                    <!--<router-link class="btn btn-xs" v-bind:to="{name: 'ContactView', params: {id: contact.id}}"><i class="fa fa-eye" aria-hidden="true"></i></router-link>-->
+                    <!--<router-link class="btn btn-xs" v-bind:to="{name: 'ContactEdit', params: {id: contact.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></router-link>-->
+                    <!--<router-link class="btn btn-xs" v-bind:to="{name: 'ContactDelete', params: {id: contact.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></router-link>-->
                 </td>
             </tr>
             </tbody>
@@ -39,25 +39,35 @@
 <script>
     export default {
         data:function(){
-            return {contacts: '', clients:''};
+            return {
+                contacts: {
+                        address: '',
+                        postcode: '',
+                        client_id: '',
+                } };
         },
         created: function() {
-            let uri = this.$route.params.id;
-            console.log('Hello world10');
-            Axios.get( '/contact/').then((response) => {
+            this.is_refresh = true;
+            let uri = '/contact/' + this.$route.params.id;
+            console.log(this.$route.params.id);
+            Axios.get(uri).then((response)=>{
+                console.log('data', response.data);
                 this.contacts = response.data;
             });
+
+
         },
 
         computed: {
             filteredContacts: function(){
                 if(this.contacts.length) {
+                    console.log('1111', this.contacts);
                     return this.contacts;
                 }
             }
         },
         mounted() {
-console.log('Hello world11111');
+             console.log('Hello world11111');
         }
 
     }
