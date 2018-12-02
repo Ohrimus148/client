@@ -6,11 +6,11 @@
                 Add new Contact
             </router-link>
         </div><div class="pull-right">
-            <router-link class="btn btn-xs btn-success " v-bind:to="{path: '/'}">
-                <span class="glyphicon glyphicon-plus"></span>
-                Clients List
-            </router-link>
-        </div>
+        <router-link class="btn btn-xs btn-success " v-bind:to="{path: '/'}">
+            <span class="glyphicon glyphicon-plus"></span>
+            Clients List
+        </router-link>
+    </div>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -42,7 +42,9 @@
             return {contacts: '', clients:''};
         },
         created: function() {
-            Axios.get('contacts').then((response) => {
+            let uri = this.$route.params.id;
+            console.log('Hello world10');
+            Axios.get( '/contact/').then((response) => {
                 this.contacts = response.data;
             });
         },
@@ -55,7 +57,7 @@
             }
         },
         mounted() {
-
+console.log('Hello world11111');
         }
 
     }

@@ -13,7 +13,7 @@
        name:'main-app',
         components: {Header},
         mounted() {
-            console.log('Component mounted')
+
         }
     }
 </script>

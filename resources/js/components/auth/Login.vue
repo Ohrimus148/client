@@ -47,7 +47,6 @@
                 this.$store.dispatch('login');
                 login(this.$data.form)
                     .then((res) => {
-                        console.log(res);
                         this.$store.commit("loginSuccess", res);
                         this.$router.push({path: '/'});
                     })

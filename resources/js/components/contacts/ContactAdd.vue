@@ -47,18 +47,17 @@
             }
 
 
-        },
-        computed: {
-            filteredClients: function(){
-                if(this.clients.length) {
-                    return this.clients;
+            },
+            computed: {
+                filteredClients: function(){
+                    if(this.clients.length) {
+                        return this.clients;
+                    }
                 }
-            }
-        },
-        mounted() {
-           this.clients =  this.getAllClient();
-          //  console.log(this.clients);
-        }
+             },
+             mounted() {
+                 this.clients =  this.getAllClient();
+             }
     }
 </script>
 <style scoped>

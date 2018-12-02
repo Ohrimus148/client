@@ -13,6 +13,12 @@ class ClientController extends Controller
         return view('clients.index');
     }
 
+    public function getClientContactsById($id)
+    {
+        dd($id);
+        return Client::with('Contacts')->first();
+    }
+
     /**
      * Display a listing of the resource.
      *

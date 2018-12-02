@@ -13,6 +13,6 @@ class Contact extends Model
 
     public function clients()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 }

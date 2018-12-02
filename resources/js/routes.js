@@ -9,6 +9,7 @@ import ContactAdd from './components/contacts/ContactAdd.vue';
 import ContactDelete from './components/contacts/ContactDelete.vue';
 import ContactEdit from './components/contacts/ContactEdit.vue';
 import ContactView from './components/contacts/ContactView.vue';
+import ClientContacts from './components/clients/ClientContacts.vue';
 
 export const routes = [
     {
@@ -94,6 +95,15 @@ export const routes = [
         name: 'ContactView',
         path: '/contacts/:id',
         component: ContactView,
+        meta: {
+            requiresAuth: true
+        }
+    },
+
+    {
+        name: 'ClientContacts',
+        path: '/clients/contacts',
+        component: ClientContacts,
         meta: {
             requiresAuth: true
         }

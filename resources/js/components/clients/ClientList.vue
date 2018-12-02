@@ -24,7 +24,7 @@
                 <td>{{ client.first_name }}</td>
                 <td>{{ client.email }}</td>
                 <td class="btn-wrapper">
-
+                    <router-link class="btn btn-success" v-bind:to="{name: 'ClientContacts', params: {id: client.id}}">Contacts</router-link>
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientView', params: {id: client.id}}"><i class="fa fa-eye" aria-hidden="true"></i></router-link>
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientEdit', params: {id: client.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></router-link>
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientDelete', params: {id: client.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></router-link>
@@ -42,6 +42,7 @@
         },
         created: function() {
             Axios.get('clients').then((response) => {
+                console.log(response);
                 this.clients = response.data;
             });
         },
