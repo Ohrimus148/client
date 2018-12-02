@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Contact;
 
+use App\Client;
+use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class ContactController extends Controller
 {
@@ -12,9 +15,18 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home()
+    {
+        return view('clients.index');
+    }
+
     public function index()
     {
-        //
+        return Contact::orderBy('id', 'DESC')->get();
+//        return Client::where('id', 13)->first();
+//        return Contact::with('Clients')->get();
+//        return Client::with('Contacts')->get();
     }
 
     /**
@@ -35,7 +47,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'address' => 'required',
+            'postcode' => 'required',
+//            'client_id' => 'required'
+        ]);
+
+        $create = Contact::create($request->all());
+        return response()->json(['status' => 'success','msg'=>'Contact created successfully']);
     }
 
     /**
@@ -46,7 +65,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        return Contact::find($id);
     }
 
     /**
@@ -57,7 +76,7 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Contact::find($id);
     }
 
     /**
@@ -69,7 +88,18 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'postcode' => 'required',
+            'address' => 'required',
+        ]);
+
+        $contact = Contact::find($id);
+        if($contact->count()){
+            $contact->update($request->all());
+            return response()->json(['status'=>'success','msg'=>'Contact updated successfully']);
+        } else {
+            return response()->json(['status'=>'error','msg'=>'error in updating contact']);
+        }
     }
 
     /**
@@ -80,6 +110,12 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+        if($contact->count()){
+            $contact->delete();
+            return response()->json(['status'=>'success','msg'=>'Contact deleted successfully']);
+        } else {
+            return response()->json(['status'=>'error','msg'=>'error in deleting contact']);
+        }
     }
 }

@@ -1,10 +1,10 @@
-<template id="post-delete">
+<template id="contact-delete">
     <div>
-        <h3>Delete customer {{ client.name  }}</h3>
-        <form v-on:submit.prevent = "deleteClient">
+        <h3>Delete Contact {{ contact.address  }}</h3>
+        <form v-on:submit.prevent = "deleteContact">
             <p>The action cannot be undone</p>
             <button class="btn btn-xs btn-danger" type="submit" name="button">Delete</button>
-            <router-link class="btn btn-xs btn-primary" v-bind:to="'/'">Back</router-link>
+            <router-link class="btn btn-xs btn-primary" v-bind:to="'/all'">Back</router-link>
         </form>
     </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
     export default {
         data: function () {
-            return {client: {name: '', email: ''}}
+            return {contact: {postcode: '', address: ''}}
         },
         created: function(){
             let uri = this.$route.params.id+'/edit';
@@ -21,15 +21,15 @@
             });
         },
         methods: {
-            deleteClient: function() {
+            deleteContact: function() {
                 let uri = this.$route.params.id;
-                Axios.delete(uri, this.client).then((response) => {
-                    this.$router.push({name: 'ClientList'})
+                Axios.delete(uri, this.contact).then((response) => {
+                    this.$router.push({name: 'ContactList'})
                 })
             }
         }
     }
-    </script>
+</script>
 <style scoped>
     h3{
         margin-bottom: 40px;
