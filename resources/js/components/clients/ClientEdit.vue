@@ -1,4 +1,4 @@
-<template id="post-edit">
+<template id="client-edit">
     <div>
         <h3>Edit New Client</h3>
         <form v-on:submit.prevent = "updateClient">

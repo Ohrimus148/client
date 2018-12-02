@@ -1,11 +1,13 @@
 <template id="client-list">
-    <div class="row">
-        <div class="pull-right">
+    <div class="row justify-content-between">
+        <div class="pull-right ">
             <router-link class="btn btn-xs btn-primary add-client" v-bind:to="{path: '/create'}">
                 <span class="glyphicon glyphicon-plus"></span>
                 Add new Client
             </router-link>
-
+        </div>
+        <div>
+            <router-link class="btn btn-success" v-bind:to="{name: 'ContactList'}">Contacts</router-link>
         </div>
         <table class="table table-striped">
             <thead>
@@ -22,6 +24,7 @@
                 <td>{{ client.first_name }}</td>
                 <td>{{ client.email }}</td>
                 <td class="btn-wrapper">
+
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientView', params: {id: client.id}}"><i class="fa fa-eye" aria-hidden="true"></i></router-link>
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientEdit', params: {id: client.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></router-link>
                     <router-link class="btn btn-xs" v-bind:to="{name: 'ClientDelete', params: {id: client.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></router-link>
