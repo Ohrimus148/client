@@ -26,7 +26,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Client::orderBy('id', 'DESC')->get();
+        return Client::with('Contacts')->orderBy('id', 'DESC')->get();
     }
 
     /**
@@ -37,6 +37,16 @@ class ClientController extends Controller
     public function create()
     {
         //
+    }
+
+    public function importCsv(Request $request)
+    {
+        $data = $request['customers'];
+        $client = new Client;
+        $valid_data = $client->getValidatedData($data);
+        $invalid_data = $client->getInvalidatedData($data, $valid_data);
+        $create = Client::insert($valid_data);
+        return response()->json( ['status' => 'success','msg'=>'Clients has been created successfully', 'invalid_data' => $invalid_data] );
     }
 
     /**
@@ -74,7 +84,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        return Client::find($id);
+        return $edit = Client::with('contacts')->where('id', $id)->get();
+
     }
 
     /**
@@ -90,13 +101,12 @@ class ClientController extends Controller
             'first_name' => 'required',
             'email' => 'required',
         ]);
-
         $client = Client::find($id);
-        if($client->count()){
+        if($client->count()) {
             $client->update($request->all());
             return response()->json(['statur'=>'success','msg'=>'Client updated successfully']);
         } else {
-            return response()->json(['statur'=>'error','msg'=>'error in updating post']);
+            return response()->json(['statur'=>'error','msg'=>'error in updating client']);
         }
     }
 

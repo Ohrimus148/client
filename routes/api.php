@@ -23,8 +23,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 });
 
 Route::group(['middleware' => 'jwt.auth'], function ($router) {
-
     Route::resource('clients', 'Client\ClientController');
     Route::resource('contacts', 'Contact\ContactController');
-
+    Route::post('clients/csv', 'Client\ClientController@importCsv');
 });
