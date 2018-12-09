@@ -24,9 +24,6 @@ class ContactController extends Controller
     public function index()
     {
         return Contact::orderBy('id', 'DESC')->get();
-//        return Client::where('id', 13)->first();
-//        return Contact::with('Clients')->get();
-//        return Client::with('Contacts')->get();
     }
 
     /**
@@ -50,9 +47,8 @@ class ContactController extends Controller
         $this->validate($request, [
             'address' => 'required',
             'postcode' => 'required',
-//            'client_id' => 'required'
+       //     'client_id' => 'required'
         ]);
-
         $create = Contact::create($request->all());
         return response()->json(['status' => 'success','msg'=>'Contact created successfully']);
     }
@@ -110,7 +106,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contact = Contact::find($id);
+        $contact = Contact::whereIn('id',explode(",",$id));
         if($contact->count()){
             $contact->delete();
             return response()->json(['status'=>'success','msg'=>'Contact deleted successfully']);
