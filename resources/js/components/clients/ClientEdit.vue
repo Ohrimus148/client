@@ -8,7 +8,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="edit-body">Email</label>
-                <input class="form-control" rows="10" v-model="client.email"></input>
+                <input class="form-control" rows="10" v-model="client.email">
             </div>
             <button type="submit" class="btn btn-xs btn-primary">Update Client</button>
             <router-link class="btn btn-xs btn-warning" v-bind:to="'/'">Cancel</router-link>
@@ -24,7 +24,7 @@
         created: function(){
             let uri = this.$route.params.id+'/edit';
             Axios.get(uri).then((response) => {
-                this.client = response.data;
+                this.client = response.data[0];
             });
         },
         methods: {

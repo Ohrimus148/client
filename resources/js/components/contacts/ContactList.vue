@@ -54,10 +54,6 @@
                 }
             }
         },
-        mounted() {
-
-        }
-
     }
 </script>
 <style scoped>
