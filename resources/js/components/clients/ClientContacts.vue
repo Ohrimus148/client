@@ -49,9 +49,7 @@
         created: function() {
             this.is_refresh = true;
             let uri = '/contact/' + this.$route.params.id;
-            console.log(this.$route.params.id);
             Axios.get(uri).then((response)=>{
-                console.log('data', response.data);
                 this.contacts = response.data;
             });
 
@@ -61,15 +59,10 @@
         computed: {
             filteredContacts: function(){
                 if(this.contacts.length) {
-                    console.log('1111', this.contacts);
                     return this.contacts;
                 }
             }
         },
-        mounted() {
-             console.log('Hello world11111');
-        }
-
     }
 </script>
 <style scoped>

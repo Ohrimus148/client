@@ -42,7 +42,6 @@
         },
         created: function() {
             Axios.get('clients').then((response) => {
-                console.log(response);
                 this.clients = response.data;
             });
         },
